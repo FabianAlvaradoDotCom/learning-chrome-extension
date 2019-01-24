@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Fabians Practicing App",
+  "description": "Application made to trigger questions on the selected topics during the day to keep the mind practicing on the selected topics",
+  "version": "1.0",
+  "browser_action": {
+    "default_title": "Fabians Practicing App",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "permissions": ["storage", "notifications", "alarms", "activeTab", "tabs"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
