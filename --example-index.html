@@ -7,15 +7,119 @@
     <title>Document</title>
     <style>
       body {
-        background-color: black;
+        background-color: rgb(5, 5, 5);
         color: #008d00;
         padding-left: 90px;
         padding-top: 50px;
       }
+      .hidden {
+        display: none;
+      }
+      .visible-pre {
+        display: block;
+        font-family: Consolas;
+      }
+      .visible-p {
+        display: block;
+        color: gray;
+        font-family: sans-serif;
+      }
+      textarea {
+        border: solid 1px gray;
+        background-color: #000;
+        color: green;
+        font-family: Consolas;
+      }
     </style>
   </head>
   <body>
-    <div rel="parent"><p rel="question">Sending something</p></div>
+    <div rel="parent">
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+
+      <p rel="q" class="hidden">Some text</p>
+      <pre rel="q" class="hidden">Some code</pre>
+    </div>
+
+    <textarea name="" id="" cols="80" rows="10"></textarea>
 
     <script>
       'use strict';
@@ -51,14 +155,15 @@
           })
           .then(response => {
             console.log(response);
-            document.querySelector('[rel="question"]').textContent =
-              response.selected.questionPart1 +
-              (response.selected.questionPart2
-                ? response.selected.questionPart2
-                : '');
-            responseObject = response;
+            // document.querySelector('[rel="question"]').textContent =
+            //   response.selected.questionPart1 +
+            //   (response.selected.questionPart2
+            //     ? response.selected.questionPart2
+            //     : '');
 
-            iterateQuestionParts(response.selected);
+            responseObject = response.selected;
+
+            iterateQuestionParts(responseObject);
           })
           .catch(err => {
             console.log(err);
@@ -91,6 +196,26 @@
                   ' ',
                   objectQuestions['q' + countPass + 'type'] ? true : false
                 );
+                document.querySelectorAll(
+                  objectQuestions['q' + countPass + 'type'] ? 'pre' : 'p'
+                )[countPass].textContent =
+                  objectQuestions[arrayQuestions[noElement]];
+
+                document
+                  .querySelectorAll(
+                    objectQuestions['q' + countPass + 'type'] ? 'pre' : 'p'
+                  )
+                  [countPass].classList.remove('hidden');
+
+                document
+                  .querySelectorAll(
+                    objectQuestions['q' + countPass + 'type'] ? 'pre' : 'p'
+                  )
+                  [countPass].classList.add(
+                    objectQuestions['q' + countPass + 'type']
+                      ? 'visible-pre'
+                      : 'visible-p'
+                  );
 
                 //let newQuestionLine = document.createElement()
                 //
