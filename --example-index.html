@@ -12,17 +12,24 @@
     <script>
       'use strict';
 
-      var myHeaders = new Headers();
+      var myHeaders = new Headers({
+        'Content-Type': 'application/json'
+      });
+
+      let subject = {
+        subject: 'Node'
+      };
 
       var myInit = {
-        method: 'GET',
+        method: 'POST',
         headers: myHeaders,
+        cache: 'default',
         mode: 'cors',
-        cache: 'default'
+        body: JSON.stringify(subject)
       };
 
       var myRequest = new Request(
-        'https://learning-system-fabian.herokuapp.com/question-details/5a6efc56ce10e66a971b5f08',
+        'https://chrome-extension-app.herokuapp.com/question/random',
         myInit
       );
 
