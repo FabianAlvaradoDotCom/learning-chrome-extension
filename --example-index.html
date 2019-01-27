@@ -5,20 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+        color: #008d00;
+        padding-left: 90px;
+        padding-top: 50px;
+      }
+    </style>
   </head>
   <body>
-    <p rel="questionContainer">Sending something</p>
+    <div rel="parent"><p rel="question">Sending something</p></div>
 
     <script>
       'use strict';
 
       document.addEventListener('DOMContentLoaded', function(event) {
+        let responseObject = {};
+
         var myHeaders = new Headers({
           'Content-Type': 'application/json'
         });
 
         let subject = {
-          subject: 'Node'
+          //subject: 'JS'
+          subject: 'JavaScript' //https://chrome-extension-app.herokuapp.com/question/details/5a8d6ff62ae7940a640fff81
         };
 
         var myInit = {
@@ -34,22 +45,65 @@
           myInit
         );
 
-        fetch(myRequest)
+        let myFetch = fetch(myRequest)
           .then(function(response) {
             return response.json();
           })
           .then(response => {
             console.log(response);
-            document.querySelector('[rel="questionContainer"]').textContent =
+            document.querySelector('[rel="question"]').textContent =
               response.selected.questionPart1 +
               (response.selected.questionPart2
                 ? response.selected.questionPart2
                 : '');
+            responseObject = response;
+
+            iterateQuestionParts(response.selected);
           })
           .catch(err => {
             console.log(err);
           });
       });
+
+      //5a8eaa6565692f2dc0ed7aea
+      //5a8d6ff62ae7940a640fff81
+      function iterateQuestionParts(objectQuestions) {
+        let arrayQuestions = Object.keys(objectQuestions);
+        console.log(arrayQuestions.length);
+        for (let countPass = 0; countPass < 40; countPass += 1) {
+          for (
+            let noElement = 0;
+            noElement < arrayQuestions.length;
+            noElement += 1
+          ) {
+            if (arrayQuestions[noElement].slice(0, 12) === 'questionPart') {
+              if (
+                arrayQuestions[noElement].slice(
+                  12,
+                  arrayQuestions[noElement].length
+                ) == countPass
+              ) {
+                //
+                //
+                //
+                console.log(
+                  arrayQuestions[noElement],
+                  ' ',
+                  objectQuestions['q' + countPass + 'type'] ? true : false
+                );
+
+                //let newQuestionLine = document.createElement()
+                //
+                //
+                //
+              }
+            }
+          }
+        }
+      }
+
+      // Iterate through Object type
+      // create pre for code questions
     </script>
   </body>
 </html>
