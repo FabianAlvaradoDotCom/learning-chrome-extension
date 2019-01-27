@@ -1,4 +1,4 @@
 chrome.alarms.create('mialarma', {
-  delayInMinutes: 1,
-  periodInMinutes: 1
+  delayInMinutes: 0.2,
+  periodInMinutes: 0.2
 });
