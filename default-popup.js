@@ -2,7 +2,20 @@
   let boton1 = document.querySelector('[rel="uno"]');
   let boton2 = document.querySelector('[rel="dos"]');
   let boton3 = document.querySelector('[rel="tres"]');
-  boton1.addEventListener('click', function(event) {
+
+  boton1.addEventListener('click', event => {
+    chrome.windows.create({
+      url: 'question-page.html',
+      type: 'popup',
+      width: 870,
+      height: 700
+      // ,
+      // left: 300,
+      // top: 350
+    });
+  });
+
+  boton2.addEventListener('click', function(event) {
     let notifDetails = {
       type: 'basic',
       title: 'Learing notification',
@@ -12,7 +25,7 @@
     chrome.notifications.create('notif', notifDetails, function(notifName) {});
   });
 
-  boton2.addEventListener('click', function(event) {
+  boton3.addEventListener('click', function(event) {
     chrome.notifications.clear('notif', function() {});
   });
 })();
