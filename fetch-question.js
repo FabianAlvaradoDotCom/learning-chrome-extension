@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         .then(response => {
           console.log(response);
 
-          responseObject = response.selected;
+          responseObject = response.questionResponse;
 
           iterateQuestionParts(responseObject);
         })
