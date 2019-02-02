@@ -3,6 +3,10 @@
 document.addEventListener('DOMContentLoaded', function(event) {
   let responseObject = {};
 
+  let timeSpan = (document.querySelector(
+    '[rel="time"]'
+  ).textContent = new Date());
+
   var myHeaders = new Headers({
     'Content-Type': 'application/json'
   });
@@ -106,5 +110,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
     document.querySelector('[rel="answer"]').textContent =
       objectQuestions.answer;
+    document.querySelector('[rel="topic"]').textContent =
+      objectQuestions.questionTopic;
+    document.querySelector('[rel="subject"]').textContent =
+      objectQuestions.subject;
   }
 });
