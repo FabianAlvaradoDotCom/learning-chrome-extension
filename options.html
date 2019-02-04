@@ -1,31 +1,42 @@
 <!DOCTYPE html>
-<head>   
-<title>Practicing app - options</title>
-</head>
-<body>
-<h2>Options page</h2>
-<input type="checkbox" id="Node"
-name="subject" value="Node" class="cosa">
-<label for="Node">Node</label>
-<input type="checkbox" id="JS"
-name="subject" value="JS" class="cosa">
-<label for="JS">JS</label>
-<input type="checkbox" id="CSS"
-name="subject" value="CSS" class="cosa">
-<label for="CSS">CSS</label>
-<input type="checkbox" id="Java"
-name="subject" value="Java" class="cosa">
-<label for="Java">Java</label>
-<br>
-<br>
-<label for="frequency">Enter the frequency for the questions to show up (in the current version you need to re-start Chrome to get the time interval updated)</label>
-<br>
-<input type="text" id="frequency" rel="frequency">
-<button rel="saveFrequency">Save!</button>
-<br>
-<br>
-<button rel="clear">Reset all to defaults</button>
-<script src="./options.js"></script>
-<script src="./alarm-time-config.js"></script>
-</body>
+    <head>   
+    <title>Practicing app - options</title>
+        <style>
+            body{
+                background-color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Options page</h2><br>
+        <!-- <button rel="justclear">Just clear</button> -->
+
+        <input type="checkbox" id="Welcome"
+        name="subject" value="Welcome" class="cosa">
+        <label for="Welcome">Welcome</label>
+
+        <input type="checkbox" id="Node"
+        name="subject" value="Node" class="cosa">
+        <label for="Node">Node</label>
+        <input type="checkbox" id="JS"
+        name="subject" value="JS" class="cosa">
+        <label for="JS">JS</label>
+        <input type="checkbox" id="CSS"
+        name="subject" value="CSS" class="cosa">
+        <label for="CSS">CSS</label>
+        <input type="checkbox" id="Java"
+        name="subject" value="Java" class="cosa">
+        <label for="Java">Java</label>
+        <br>
+        <br>
+        <label for="frequency">Enter the frequency for the questions to show up (in the current version you need to re-start Chrome to get the time interval updated)</label>
+        <br>
+        <input type="text" id="frequency" rel="frequency">
+        <button rel="saveFrequency">Save!</button>
+        <br>
+        <br>
+        <button rel="clear">Reset all to defaults</button>
+        <script src="./options.js"></script>
+        <script src="./alarm-time-config.js"></script>
+    </body>
 </html>
