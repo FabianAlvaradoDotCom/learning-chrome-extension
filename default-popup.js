@@ -7,7 +7,7 @@
     chrome.windows.create({
       url: 'question-page.html',
       type: 'popup',
-      width: 870,
+      width: 905,
       height: 700
       // ,
       // left: 300,

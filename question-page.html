@@ -7,7 +7,7 @@
         background-color: #000;
         font-size: 1em;
         padding: 10px;
-        color: #aaa;
+        color: #ccc;
         /*font-family: 'Courier New', Courier, monospace;*/
         /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
           sans-serif;*/
@@ -16,31 +16,98 @@
 
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
+      a {
+        font-size: 0.9em;
+      }
       .hidden {
         display: none;
       }
       .visible-pre {
-        display: block;
         font-family: Consolas;
         color: #007acc;
         margin-left: 20px;
       }
-      .visible-p {
-        display: block;
+      .answer {
+        padding: 0px;
+        margin-left: 0px;
+        color: #b500bf;
+        display: none;
+      }
+      #editor-container {
+        position: relative;
+        width: 852px;
+        background-color: hotpink;
       }
       textarea {
-        border: solid 1px gray;
-        background-color: rgb(25, 25, 25);
-        color: #00ab00;
         font-family: Consolas;
         font-size: 1em;
         padding: 10px;
+        resize: none;
+        overflow: hidden;
+      }
+      #answer-field {
+        background-color: rgb(25, 25, 25);
+        color: #00ab00;
+        padding-left: 50px;
+        margin-bottom: -4px;
+        border: 0;
+        outline: none;
+      }
+      #line-counter {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        overflow: hidden;
+        color: #333;
+        background-color: #111;
+        text-align: right;
+        border: 0;
+        outline: none;
+      }
+      /* width */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: rgb(26, 25, 25);
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #535353;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #2b2b2b;
+      }
+      .success {
+        border: solid 2px green;
+      }
+      #refreshScreen {
+        background: linear-gradient(to bottom, #1f1f1f 0%, #222 100%);
+        color: black;
+        border: none;
+        padding: 5px;
+        font-family: Consolas;
+        border: solid 1px black;
+      }
+      #refreshScreen:hover {
+        background: linear-gradient(to bottom, #0059ff 0%, #003c96 100%);
+      }
+      .externalLink {
+        position: relative;
       }
     </style>
   </head>
   <body>
-    <strong><span rel="subject"></span> - <span rel="topic"></span> <span
-        rel="time"></span></strong>
+    <strong
+      ><span rel="subject"></span> - <span rel="topic"></span>
+      <!-- <span rel="time"></span> -->
+    </strong>
     <div rel="parent">
       <p rel="q" class="hidden">Some text</p>
       <pre rel="q" class="hidden">Some code</pre>
@@ -127,8 +194,55 @@
       <pre rel="q" class="hidden">Some code</pre>
     </div>
 
-    <textarea name="" id="" cols="86" rows="10"></textarea>
-    <p rel="answer"></p>
+    <div id="editor-container" rel="editor-container">
+      <textarea
+        cols="86"
+        rows="1"
+        id="answer-field"
+        rel="answer-field"
+        spellcheck="false"
+        autofocus
+      ></textarea>
+      <textarea
+        rows="1"
+        id="line-counter"
+        rel="line-counter"
+        disabled
+      ></textarea>
+      <br />
+      <label for="showAnswer" style="float:right">Show/Hide answer</label>
+      <input
+        type="checkbox"
+        rel="showAnswer"
+        id="showAnswer"
+        style="float:right"
+      />
+    </div>
+    <button rel="refreshScreen" id="refreshScreen">
+      Done, another one please
+    </button>
+
+    <pre rel="answer" class="visible-pre answer"></pre>
+    <p rel="answer" class="visible-pre answer"></p>
+
+    <a target="_new" href="" class="hidden" rel="externalReference"
+      >Video reference at: <span></span></a
+    ><br />
+    <a target="_new" href="" class="hidden" rel="externalReference"
+      >Video reference at: <span></span></a
+    ><br />
+    <a target="_new" href="" class="hidden" rel="externalReference"
+      >Video reference at: <span></span></a
+    ><br />
+    <a target="_new" href="" class="hidden" rel="externalReference"
+      >Video reference at: <span></span></a
+    ><br />
+    <a target="_new" href="" class="hidden" rel="externalReference"
+      >Video reference at: <span></span></a
+    ><br />
+    <a target="_new" href="" class="hidden" rel="externalReference"
+      >Video reference at: <span></span
+    ></a>
 
     <script src="./fetch-question.js"></script>
   </body>

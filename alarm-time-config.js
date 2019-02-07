@@ -31,10 +31,10 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       delayInMinutes: frequency,
       periodInMinutes: frequency
     });
-    console.log(
-      `This is the new time set: `,
-      newFreqGotten.questionFrequencyTime,
-      `...[comments from alarma-time-config.js]`
-    );
+    // console.log(
+    //   `This is the new time set: `,
+    //   newFreqGotten.questionFrequencyTime,
+    //   `...[comments from alarma-time-config.js]`
+    // );
   });
 });

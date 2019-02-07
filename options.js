@@ -26,9 +26,9 @@
       chrome.storage.sync.get('subject', subjectsInMemory => {
         // We check IF the retrieved 'subjectsInMemory' object has any content, if not, we create an empty array
         if (Object.keys(subjectsInMemory).length == 0) {
-          console.log('no memory');
+          //console.log('no memory');
           subjectsInMemory = { subject: [] };
-          console.log(subjectsInMemory);
+          //console.log(subjectsInMemory);
 
           // We count the number of checkboxes 'subject' of the UI, and for each of them
           // we create an empty array element and add to the empty array of subjects
@@ -41,16 +41,16 @@
               subjectsInMemory.subject.push('');
             }
           }
-          console.log(subjectsInMemory);
+          // console.log(subjectsInMemory);
 
           // Once we have an array that corresponds with nunmber of UI subjects checkboxes, we
           // save that object to chrome storage
           chrome.storage.sync.set(subjectsInMemory, () => {
             chrome.storage.sync.get('subject', newMemory => {
-              console.log(
-                `Array of subjecs just created and retrieved from storage`,
-                newMemory
-              );
+              // console.log(
+              //   `Array of subjecs just created and retrieved from storage`,
+              //   newMemory
+              // );
             });
           });
         }
@@ -58,7 +58,7 @@
         // Now that we have an array of subjects, no matter if is a just created array or one
         // obtained from chrome storage...
 
-        console.log(subjectsInMemory);
+        //console.log(subjectsInMemory);
 
         // We compare the value of all checkboxes in UI against the content of every
         // subjects array in the same position, we assign checked states and add listeners to checkboxes
@@ -81,9 +81,9 @@
           // It is important to add the listenr only if it does not have it so
           // it does not duplicate it, for that we add a data attribute only once
           if (cBoxArray[cBoxPos].dataset.hasEventListener) {
-            console.log(cBoxArray[cBoxPos].value, ' tiene dataset');
+            // console.log(cBoxArray[cBoxPos].value, ' tiene dataset');
           } else {
-            console.log(cBoxArray[cBoxPos].value, ' NO tiene dataset');
+            //console.log(cBoxArray[cBoxPos].value, ' NO tiene dataset');
             cBoxArray[cBoxPos].addEventListener('click', event => {
               updatingCheckboxesUIStatus(event, cBoxPos, subjectsInMemory);
             });
@@ -96,7 +96,7 @@
     // Function for managing checkboxes in the UI and store data to chrome upon checked
     // subject checkboxes
     function updatingCheckboxesUIStatus(event, cBoxPos, subjectsInMemory) {
-      console.log(event.target);
+      // console.log(event.target);
       //
       //Verify if the checkbox that triggered this event listener is checked
       if (event.target.checked) {
@@ -106,7 +106,7 @@
         subjectsInMemory.subject[cBoxPos] = event.target.value;
         chrome.storage.sync.set(subjectsInMemory, () => {
           chrome.storage.sync.get('subject', newMemory => {
-            console.log(newMemory);
+            // console.log(newMemory);
           });
         });
       } else {
@@ -115,7 +115,7 @@
         subjectsInMemory.subject[cBoxPos] = '';
         chrome.storage.sync.set(subjectsInMemory, () => {
           chrome.storage.sync.get('subject', newMemory => {
-            console.log(newMemory);
+            // console.log(newMemory);
           });
         });
       }
@@ -126,27 +126,27 @@
       //
       // First we check if any previous data exists in Chrome
       chrome.storage.sync.get('questionFrequencyTime', frequencyGotten => {
-        console.log(
-          `Frequency just retreieve before processing`,
-          frequencyGotten
-        );
+        // console.log(
+        //   `Frequency just retreieve before processing`,
+        //   frequencyGotten
+        // );
         //
         // If not data existed previously, we will set the default 30 and save to chrome storage
         if (Object.keys(frequencyGotten).length == 0) {
-          console.log('No time has been set');
+          //  console.log('No time has been set');
           chrome.storage.sync.set({ ['questionFrequencyTime']: 30 }, () => {
             chrome.storage.sync.get('questionFrequencyTime', newFreqGotten => {
               frequencyField.value = newFreqGotten.questionFrequencyTime;
-              console.log(
-                `Frequency was created from scratch and set to: `,
-                newFreqGotten
-              );
+              // console.log(
+              //   `Frequency was created from scratch and set to: `,
+              //   newFreqGotten
+              // );
             });
           });
         } else {
           //
           // If previous frequency data existed, we just update UI to reflect the number
-          console.log(`Frequency already existed: `, frequencyGotten);
+          //console.log(`Frequency already existed: `, frequencyGotten);
           frequencyField.value = frequencyGotten.questionFrequencyTime;
         }
       });
@@ -162,28 +162,28 @@
 
         // And as callback function we get the just saved data from chrome storage
         () => {
-          console.log(
-            `This is what was saved to chrome storage: `,
-            frequencyField.value
-          );
+          // console.log(
+          //   `This is what was saved to chrome storage: `,
+          //   frequencyField.value
+          // );
           chrome.storage.sync.get('questionFrequencyTime', newFreqGotten => {
             alert(
               'New intervals successfully updated, ' +
                 newFreqGotten.questionFrequencyTime +
                 ' launching question now...'
             );
-            console.log(new Date());
-            console.log(
-              'New intervals successfully updated, ' +
-                newFreqGotten.questionFrequencyTime +
-                ' launching question now...'
-            );
+            // console.log(new Date());
+            // console.log(
+            //   'New intervals successfully updated, ' +
+            //     newFreqGotten.questionFrequencyTime +
+            //     ' launching question now...'
+            // );
 
             // Then as a way to confirm the updates, we launch the question page right away.
             chrome.windows.create({
               url: 'question-page.html',
               type: 'popup',
-              width: 870,
+              width: 905,
               height: 700
               // ,
               // left: 300,

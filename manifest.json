@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "BETA - Web Developer Practicing Tool",
+  "name": "Web Developer Practicing Tool",
   "description": "Web developers (and other knowledge areas) Knowledge refresher.",
-  "version": "0.1.0.0002",
+  "version": "1.0.0.0001",
   "browser_action": {
-    "default_title": "BETA - Web Developer Practicing Tool",
+    "default_title": "Web Developer Practicing Tool",
     "default_icon": "icon.png",
     "default_popup": "default-popup.html"
   },
